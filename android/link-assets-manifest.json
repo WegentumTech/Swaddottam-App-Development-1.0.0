@@ -1,0 +1,69 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/banner1.png",
+      "sha1": "0d7ca444a5c0a8144a67d28cd63a9daac15a5490"
+    },
+    {
+      "path": "src/assets/banner2.png",
+      "sha1": "d279af3ed13bb8d7d9a25cf872d9e0d7a539aff9"
+    },
+    {
+      "path": "src/assets/banner3.png",
+      "sha1": "14328466fbb124eef68d7d0ddc42a5c32c74e928"
+    },
+    {
+      "path": "src/assets/coins.png",
+      "sha1": "aa48b9a6ee23e2fd7cdc141e8f7308b37e006137"
+    },
+    {
+      "path": "src/assets/Flag_of_India.png",
+      "sha1": "c238d2c35ea75efaba9cb4046cac59abd18649ae"
+    },
+    {
+      "path": "src/assets/food-main.jpg",
+      "sha1": "825dfaf867485eb5097fdab6ee9643237c5452e6"
+    },
+    {
+      "path": "src/assets/loginIllustrator.webp",
+      "sha1": "2e311d60d0c955db6f0d51b65adf98505906e94c"
+    },
+    {
+      "path": "src/assets/mealScrollable.jpg",
+      "sha1": "a5f8e802881bccc43e5a9660730636449ae904dd"
+    },
+    {
+      "path": "src/assets/menu.png",
+      "sha1": "0b06ee847e8562019f8cb2e3a394fdaecc5a2853"
+    },
+    {
+      "path": "src/assets/nothing_found.webp",
+      "sha1": "bd26155dde62da9a24d1841a8ba9d7b8bdb91bc9"
+    },
+    {
+      "path": "src/assets/offerPic.png",
+      "sha1": "d8641c72e52f64ac54680b248dd50c95a4c9bd57"
+    },
+    {
+      "path": "src/assets/payment_success.png",
+      "sha1": "2b2eb53aaaccdd6290e10c861ab211053628308b"
+    },
+    {
+      "path": "src/assets/pepsi.png",
+      "sha1": "f6511499850015cbfe868314870cd2ca8f80b736"
+    },
+    {
+      "path": "src/assets/roundFood.png",
+      "sha1": "d08c31765164e608028799ff7ff8209f19592cb5"
+    },
+    {
+      "path": "src/assets/singleProduct.jpg",
+      "sha1": "701da394b7ad1652fb861950d6e2c74b9574c5c3"
+    },
+    {
+      "path": "src/assets/SplashLogo.png",
+      "sha1": "1bdc99d38725b9840169385a7b3cef5ca3045443"
+    }
+  ]
+}
