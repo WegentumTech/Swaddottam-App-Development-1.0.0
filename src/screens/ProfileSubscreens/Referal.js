@@ -106,7 +106,7 @@ const Referal = () => {
 
           <View style={{marginHorizontal: 10}}>
             <Text style={{color: 'black', fontSize: 18, marginTop: 28}}>
-              Refer your friendsf
+              Refer your friends
             </Text>
             <Text
               style={{

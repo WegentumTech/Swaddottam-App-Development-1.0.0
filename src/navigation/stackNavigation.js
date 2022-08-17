@@ -26,16 +26,19 @@ import Starter from '../screens/Starter';
 import OrderSummary from '../screens/OrderSummary';
 import PaymentSucess from '../screens/PaymentSucess';
 import OnlineCheckout from '../screens/OnlineCheckout';
+import ReferUseSection from '../screens/ReferUseSection';
 
 const Stack = createStackNavigator();
 
 function StackNavigation() {
   return (
     <Stack.Navigator
+    
       screenOptions={{
         headerShown: false,
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS,
       }}
+      // initialRouteName="ReferUseSection">
       initialRouteName="SplashScreen">
       <Stack.Screen name="Home" component={Home} />
       <Stack.Screen name="SplashScreen" component={SplashScreen} />
@@ -59,6 +62,7 @@ function StackNavigation() {
       <Stack.Screen name="OrderSummary" component={OrderSummary} />
       <Stack.Screen name="PaymentSucess" component={PaymentSucess} />
       <Stack.Screen name="OnlineCheckout" component={OnlineCheckout} />
+      <Stack.Screen name="ReferUseSection" component={ReferUseSection} />
     </Stack.Navigator>
   );
 }

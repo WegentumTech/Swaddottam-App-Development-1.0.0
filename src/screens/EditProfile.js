@@ -1,4 +1,4 @@
-import {View, Text, Image, TouchableOpacity, TextInput} from 'react-native';
+import {View, Text, Image, TouchableOpacity, TextInput,Alert} from 'react-native';
 import React, {useRef, useState, useEffect} from 'react';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Entypo from 'react-native-vector-icons/Entypo';
@@ -23,6 +23,7 @@ const EditProfile = () => {
   const [contactNumber, setContactNumber] = useState('');
   const [userId, setUserId] = useState('');
   const [imageUrl, setImageUrl] = useState('');
+  const [photo, setPhoto] = useState("")
 
   const [fileName, setFileName] = useState('');
   const [fileSize, setFileSize] = useState('');
@@ -69,65 +70,85 @@ const EditProfile = () => {
   };
 
   const UpdateUser = async () => {
-    // console.log(fullName.fullName);
-    // console.log(email.email);
-    // console.log(contactNumber.contactNumber);
-    // console.log(userId);
-    console.log(imageUrl);
-    console.log(type);
-    console.log(fileName);
 
-    // new api will be here
+    // console.log(imageLink)
 
-    const formData = new FormData();
-    formData.append('file', {
-      uri: imageUrl,
-      type: type,
-      name: fileName,
-    });
 
-    let respo = await fetch(BACKEND_URL + 'uploadi', {
-      method: 'post',
-      body: formData,
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      },
-    });
-    let responseJson = await respo.json();
-    console.log(responseJson);
+    let newFile = {
+      uri: imageLink,
+      type: `test/${imageLink.split(".")[1]}`,
+      name: `test.${imageLink.split(".")[1]}`,
+    };
+    console.log(newFile)
 
-    Toast.show({
-      type: 'success',
-      text1: 'Your Profile Is Updated',
-      text2: 'You Can Go Back Now',
-    });
 
-    // try {
-    //   axios
-    //     .post(
-    //       BACKEND_URL + 'uploadi',
 
-    //       formData,
+    const data = new FormData()
+    data.append('file', imageLink)
+    data.append('upload_preset', 'mystore')
+    data.append("cloud_name", "learnerboy")
+    fetch("https://api.cloudinary.com/v1_1/learnerboy/image/upload", {
+      method: "post",
+      body: data
+    }).then(res => res.json()).
+      then(data => {
+        setPhoto(data.secure_url)
+        console.log(data)
+      }).catch(err => {
+        Alert.alert("An Error Occured While Uploading")
+      })
 
-    //       {
-    //         headers: {
-    //           // authkey: AuthKey,
-    //           // secretkey: AuthPassword,
-    //           'content-type': 'multipart/form-data',
-    //         },
-    //       },
-    //     )
-    //     .then(acc => {
-    //       console.log(acc.data);
-    //     })
-    //     .catch(err => {
-    //       console.log(err);
-    //     });
-    // } catch (error) {
-    //   console.log(error);
-    // }
 
-    // old api to upload other credentials
+
+
+
+
+
+    
+    
+    
+    // let newFile = {
+    //   uri: imageLink,
+    //   type: `test/${imageLink.split(".")[1]}`,
+    //   name: `test.${imageLink.split(".")[1]}`,
+    // };
+    
+  
+    // const data = new FormData();
+    // data.append("file", imageLink);
+    // data.append("upload_preset", "mystore");
+    // data.append("cloud_name", "learnerboy");
+    // fetch(
+    //   "https://api.cloudinary.com/v1_1/learnerboy/image/upload",
+    //   {
+    //     method: "POST",
+    //     body: data,
+    //   }
+    // )
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data);
+
+
+
+       
+
+
+
+
+
+
+
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     Alert.alert("An Error Occured While Uploading");
+    //   });
+
+
+    // api to upload other credentials
+
+
 
     // try {
     //   axios
@@ -138,7 +159,7 @@ const EditProfile = () => {
     //         name: fullName.fullName,
     //         mobile: contactNumber.contactNumber,
     //         Email: email.email,
-    //         profile_photo:imageUrl
+    //         profile_photo:data.secure_url
     //       },
     //       {
     //         headers: {
@@ -156,6 +177,8 @@ const EditProfile = () => {
     // } catch (error) {
     //   console.log(error);
     // }
+
+   
   };
 
   const clicked = () => {

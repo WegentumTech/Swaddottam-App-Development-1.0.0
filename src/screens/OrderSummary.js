@@ -106,7 +106,7 @@ const OrderSummary = () => {
   };
 
   const handlePayOffline = () => {
-    const totpay = Number(route.params.totPayment)*100;
+    const totpay = Number(route.params.totPayment) * 100;
     // console.log(totpay);
 
     var options = {
@@ -120,6 +120,8 @@ const OrderSummary = () => {
         // alert(`Success: ${data.razorpay_payment_id}`);
         const punchOrder = async () => {
           const userId = await AsyncStorage.getItem('ActiveUserId');
+          console.log(userId);
+          console.log(route.params.totPayment);
 
           try {
             axios
@@ -137,6 +139,7 @@ const OrderSummary = () => {
                   order_for_mobile: route.params.contactNumber,
                   address: route.params.address,
                   zip: route.params.areaCode,
+                  order_time: '2022/08/17 13:44:59',
                 },
                 {
                   headers: {

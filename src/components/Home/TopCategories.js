@@ -26,7 +26,7 @@ const TopCategories = () => {
           },
         )
         .then(acc => {
-          // console.log(acc.data);
+          console.log(acc.data);
           setDatas(acc.data);
         })
         .catch(err => {

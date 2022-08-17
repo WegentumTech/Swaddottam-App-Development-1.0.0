@@ -58,7 +58,6 @@ const VerifyOtp = () => {
     ) {
       console.log('this works');
       setMessage('');
-      navigation.replace('Home');
 
       const registerUser = () => {
         try {
@@ -76,12 +75,21 @@ const VerifyOtp = () => {
               },
             )
             .then(acc => {
-              const valueString = JSON.stringify(acc.data.user_id);
-              console.log(valueString)
-             AsyncStorage.setItem('ActiveUserId', valueString);
-            
-            
-            
+              console.log(acc.data);
+
+              if (acc.data.new_user) {
+                navigation.replace('ReferUseSection');
+
+                const valueString = JSON.stringify(acc.data.user_id);
+                console.log(valueString);
+                AsyncStorage.setItem('ActiveUserId', valueString);
+              } else {
+                navigation.replace('Home');
+
+                const valueString = JSON.stringify(acc.data.user_id);
+                console.log(valueString);
+                AsyncStorage.setItem('ActiveUserId', valueString);
+              }
             })
             .catch(err => {
               console.log(err);
