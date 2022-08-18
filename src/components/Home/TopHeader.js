@@ -5,6 +5,8 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import {useNavigation} from '@react-navigation/native';
 import GetLocation from 'react-native-get-location';
 import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 const TopHeader = () => {
   const navigation = useNavigation();
   const [Address, setAddress] = useState('Searching Your Address...');
@@ -31,6 +33,7 @@ const TopHeader = () => {
 
             setAddress(acc.data.data[0].name);
             setLocality(acc.data.data[0].locality);
+            AsyncStorage.setItem("UserAddress",acc.data.data[0].name+acc.data.data[0].locality)
 
             console.log('value updated');
           })

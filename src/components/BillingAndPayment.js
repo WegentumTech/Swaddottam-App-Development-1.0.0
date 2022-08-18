@@ -5,7 +5,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import PressBack from './Reusable/PressBack';
 import styles from '../styles/globalStyles';
 import RadioForm, {
@@ -15,6 +15,8 @@ import RadioForm, {
 } from 'react-native-simple-radio-button';
 import {useNavigation} from '@react-navigation/native';
 import {useRoute} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import DatePicker from 'react-native-date-picker';
 
 const BillingAndPayment = () => {
   const navigation = useNavigation();
@@ -24,12 +26,28 @@ const BillingAndPayment = () => {
   const [contactNumber, setContactNumber] = useState('');
   const [AreaCode, setAreaCode] = useState('');
   const [remark, setRemark] = useState('');
+  const [userAddress, setUserAddress] = useState('');
+  const [date, setDate] = useState(new Date());
+
   const route = useRoute();
 
   var radio_props = [
     {label: 'Pay Online', value: 'Pay Online'},
     {label: 'Cash On Delivery', value: 'Cash On Delivery'},
   ];
+
+  useEffect(() => {
+    GetUserAddress();
+  }, []);
+
+  const GetUserAddress = async () => {
+    const Val = await AsyncStorage.getItem('UserAddress');
+
+    if (Val !== null) {
+      setAddress({address: Val});
+      setUserAddress(Val);
+    }
+  };
 
   return (
     <View View style={{backgroundColor: 'white', height: '100%'}}>
@@ -74,6 +92,7 @@ const BillingAndPayment = () => {
                 setAddress({address: text});
               }}
               style={styles.billingInput}
+              defaultValue={userAddress}
             />
             <Text
               style={{
@@ -131,6 +150,7 @@ const BillingAndPayment = () => {
             </Text>
           </View>
         </View>
+
         <View style={{marginHorizontal: 30, marginTop: 20}}>
           <View>
             <TextInput
@@ -153,6 +173,7 @@ const BillingAndPayment = () => {
             </Text>
           </View>
         </View>
+
         <View style={{marginLeft: 40, marginTop: 30}}>
           <RadioForm
             formHorizontal={false}

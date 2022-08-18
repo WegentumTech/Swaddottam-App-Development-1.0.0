@@ -186,7 +186,7 @@ const OrderSummary = () => {
             padding: 15,
             marginHorizontal: 20,
             borderRadius: 20,
-            marginTop: 15,
+            marginTop: 55,
             marginBottom: 15,
           }}>
           <View style={{flexDirection: 'row'}}>

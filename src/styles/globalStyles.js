@@ -319,6 +319,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 15,
     color: 'black',
+    paddingLeft:15
   },
   button2: {
     backgroundColor: '#F8774A',
