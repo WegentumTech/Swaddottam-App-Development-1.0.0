@@ -13,7 +13,7 @@ const Help = () => {
   return (
     <View style={{backgroundColor: 'white', height: '100%'}}>
       <PressBackWithTitle title="Need Help ?" />
-      <View style={{alignSelf: 'center', marginTop: 15}}>
+      <View style={{alignSelf: 'center', marginTop: 55}}>
         <Image
           style={{height: 200, width: 200}}
           source={{

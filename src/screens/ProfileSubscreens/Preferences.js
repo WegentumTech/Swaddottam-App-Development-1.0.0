@@ -13,6 +13,7 @@ const Preferences = () => {
           padding: 20,
           backgroundColor: '#F79320',
           borderRadius: 10,
+          marginTop:50
         }}>
         <Text style={{fontSize: 17, color: 'black'}}>
           Satsang Nagar Colony Aktha, Paharia, Varanasi 221007

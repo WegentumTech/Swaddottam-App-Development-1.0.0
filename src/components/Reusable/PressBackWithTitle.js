@@ -9,25 +9,29 @@ const PressBackWithTitle = props => {
   const navigation = useNavigation();
 
   return (
-    <View>
-      <TouchableOpacity onPress={() => navigation.goBack()}>
-        <View
+    <>
+    <View style={{flexDirection: 'row'}}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
           style={{
             backgroundColor: '#F79320',
-            marginRight: 345,
             padding: 10,
             borderRadius: 10,
-            marginLeft: 10,
-            marginTop: 15,
+            top: 20,
+            left: 16,
           }}>
-          <AntDesign name="arrowleft" size={18} color="white" />
-        </View>
-      </TouchableOpacity>
+          <View>
+            <AntDesign name="arrowleft" size={18} color="black" />
+          </View>
+        </TouchableOpacity>
+        
+      
       <Text
-        style={{textAlign: 'center', top: -33, fontSize: 20, color: 'black'}}>
+        style={{alignSelf:"center",textAlign:"center", fontSize: 20, color: 'black',flex:1,top:20}}>
         {props.title}
       </Text>
-    </View>
+      </View>
+    </>
   );
 };
 

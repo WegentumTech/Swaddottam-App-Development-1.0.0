@@ -80,6 +80,7 @@ const Wishlist = () => {
                       borderWidth: 1,
                       borderRadius: 20,
                       paddingBottom: 30,
+                      marginTop:30
                     }}>
                     <Image
                       source={{uri: SIMPLE_URL + hit.meal_image}}
