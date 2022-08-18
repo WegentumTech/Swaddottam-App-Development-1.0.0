@@ -12,6 +12,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {useNavigation} from '@react-navigation/native';
 import RecommendedProducts from '../../components/Reusable/RecommendedProducts';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 import axios from 'axios';
 import {AuthKey} from '../../helper/baseUrl';
 import {AuthPassword} from '../../helper/baseUrl';
@@ -24,68 +25,110 @@ const SingleMealScreen = () => {
   const navigation = useNavigation();
   const [number, setNumber] = useState(1);
   const [datas, setDatas] = useState('');
+  const [data2, setData2] = useState('');
   const [inWishlist, setInWishlist] = useState(null);
+  const [pageId, setPageId] = useState("")
 
   const route = useRoute();
+  
 
   useEffect(() => {
-    const GetUserDetails = async () => {
-      const userIds = await AsyncStorage.getItem('ActiveUserId');
+  
 
-      try {
-        axios
-          .post(
-            BACKEND_URL + 'product',
-            {
-              productid: route.params.MealId,
-            },
-            {
-              headers: {
-                authkey: AuthKey,
-                secretkey: AuthPassword,
-              },
-            },
-          )
-          .then(acc => {
-            // console.log(acc.data);
-            setDatas(acc.data);
+    GetUserDetails(route.params.MealId);
 
-            try {
-              axios
-                .post(
-                  BACKEND_URL + 'iswhishlist',
-                  {
-                    userid: userIds,
-                    product_id: route.params.MealId,
-                  },
-                  {
-                    headers: {
-                      authkey: AuthKey,
-                      secretkey: AuthPassword,
-                    },
-                  },
-                )
-                .then(acc => {
-                  console.log(acc.data);
-                  setInWishlist(acc.data.status);
-                })
-                .catch(err => {
-                  console.log(err);
-                });
-            } catch (error) {
-              console.log(error);
-            }
-          })
-          .catch(err => {
-            console.log(err);
-          });
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    GetUserDetails();
   }, []);
+
+
+  const GetUserDetails = async (id) => {
+    const userIds = await AsyncStorage.getItem('ActiveUserId');
+
+    try {
+      axios
+        .post(
+          BACKEND_URL + 'product',
+          {
+            productid: id,
+          },
+          {
+            headers: {
+              authkey: AuthKey,
+              secretkey: AuthPassword,
+            },
+          },
+        )
+        .then(acc => {
+          console.log(acc.data);
+          setDatas(acc.data);
+
+          try {
+            axios
+              .post(
+                BACKEND_URL + 'iswhishlist',
+                {
+                  userid: userIds,
+                  product_id: route.params.MealId,
+                },
+                {
+                  headers: {
+                    authkey: AuthKey,
+                    secretkey: AuthPassword,
+                  },
+                },
+              )
+              .then(acc => {
+                console.log(acc.data);
+                setInWishlist(acc.data.status);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          } catch (error) {
+            console.log(error);
+          }
+
+
+
+          try {
+            axios
+              .post(
+                BACKEND_URL + 'get_tags_product',
+                {
+                  tag_id: acc.data.meal_category,
+                },
+                {
+                  headers: {
+                    authkey: AuthKey,
+                    secretkey: AuthPassword,
+                  },
+                },
+              )
+              .then(acc => {
+                console.log('below is data');
+                console.log(acc.data);
+                setData2(acc.data);
+              })
+              .catch(err => {
+                console.log(err);
+              });
+          } catch (error) {
+            console.log(error);
+          }
+
+
+
+
+
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+
 
   const handleAddToCart = async (
     id,
@@ -115,7 +158,7 @@ const SingleMealScreen = () => {
             },
           )
           .then(acc => {
-            console.log(acc.data);
+            // console.log(acc.data);
           })
           .catch(err => {
             console.log(err);
@@ -143,7 +186,7 @@ const SingleMealScreen = () => {
           },
         )
         .then(acc => {
-          console.log(acc.data);
+          // console.log(acc.data);
           navigation.navigate('Cart');
         })
         .catch(err => {
@@ -174,7 +217,7 @@ const SingleMealScreen = () => {
           },
         )
         .then(acc => {
-          console.log(acc.data);
+          // console.log(acc.data);
           setInWishlist(true);
         })
         .catch(err => {
@@ -405,7 +448,133 @@ const SingleMealScreen = () => {
         </View>
 
         <View style={{marginVertical: 10}}></View>
-        <RecommendedProducts />
+        {/* <RecommendedProducts mealId={route.params.MealId} tag={datas.meal_category}/> */}
+
+
+
+
+
+
+
+
+
+    {/* here will be tags */}
+
+
+
+
+
+
+
+
+
+        <ScrollView
+      showsHorizontalScrollIndicator={false}
+      horizontal
+      style={{marginTop: 5}}>
+      {data2 ? (
+        data2[0].map(hit => {
+          if (hit.id == route.params.MealId) {
+            return;
+          } else {
+            return (
+              <TouchableOpacity
+              key={hit.id}
+                // onPress={() =>
+                //   navigation.navigate('SingleMealScreen', {MealId: hit.id})
+                // }
+                onPress={() =>GetUserDetails(hit.id)}
+                
+                
+                >
+                <View style={{margin: 5}}>
+                  <Image
+                    source={{uri: SIMPLE_URL + hit.meal_image}}
+                    style={styles.ScrollableProducts}
+                  />
+                  <Text
+                    style={{
+                      color: '#707070',
+                      top: -15,
+                      backgroundColor: '#FFFFFF',
+                      width: 100,
+                      textAlign: 'center',
+                      left: 90,
+                      borderRadius: 10,
+                      padding: 2,
+                      top: -12,
+                      borderColor: '#707070',
+                      borderWidth: 0.5,
+                      borderStyle: 'solid',
+                    }}>
+                    Free Delivery
+                  </Text>
+
+                  <View style={{marginTop: 5}}>
+                    <Text style={styles.randomScrollableProductHead}>
+                      {hit.meal_name}
+                    </Text>
+                    {/* <Text style={styles.randomScrollableProductPara}>
+                    Category Name
+                  </Text> */}
+
+                    <View
+                      style={{
+                        flexDirection: 'row',
+                        marginTop: 20,
+                        marginBottom: 30,
+                      }}>
+                      <Text
+                        style={{
+                          color: '#333333',
+                          marginTop: 9,
+                          textDecorationLine: 'line-through',
+                        }}>
+                        ₹ {hit.old_price}
+                      </Text>
+                      <Text
+                        style={{color: '#F88922', fontSize: 23, marginLeft: 5}}>
+                        ₹ {hit.meal_price}
+                      </Text>
+                      <Text style={{marginLeft: 60}}>
+                        <Ionicons name="heart" size={30} color="#C8C8C8" />
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </TouchableOpacity>
+            );
+          }
+        })
+      ) : (
+        <></>
+      )}
+    </ScrollView>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </View>
     </ScrollView>
   );
