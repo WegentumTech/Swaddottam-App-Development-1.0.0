@@ -7,6 +7,7 @@ import {AuthPassword} from '../../helper/baseUrl';
 import {BACKEND_URL} from '../../helper/baseUrl';
 import {SIMPLE_URL} from '../../helper/baseUrl';
 import {useNavigation} from '@react-navigation/native';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 const TopCategories = () => {
   const [datas, setDatas] = useState('');
@@ -51,7 +52,9 @@ const TopCategories = () => {
           datas.map(hit => {
             return (
               <TouchableOpacity
-                onPress={() => navigation.navigate('CategotyItems',{categoryId:hit.id})}
+                onPress={() =>
+                  navigation.navigate('CategotyItems', {categoryId: hit.id})
+                }
                 key={hit.id}>
                 <View>
                   <Image
@@ -72,7 +75,31 @@ const TopCategories = () => {
             );
           })
         ) : (
-          <></>
+          <SkeletonPlaceholder>
+            <View style={{flexDirection: 'row'}}>
+              <View>
+                <View style={styles.roundFoodScrollable} />
+              </View>
+              <View>
+                <View style={styles.roundFoodScrollable} />
+              </View>
+              <View>
+                <View style={styles.roundFoodScrollable} />
+              </View>
+              <View>
+                <View style={styles.roundFoodScrollable} />
+              </View>
+              <View>
+                <View style={styles.roundFoodScrollable} />
+              </View>
+              <View>
+                <View style={styles.roundFoodScrollable} />
+              </View>
+              <View>
+                <View style={styles.roundFoodScrollable} />
+              </View>
+            </View>
+          </SkeletonPlaceholder>
         )}
       </ScrollView>
     </View>

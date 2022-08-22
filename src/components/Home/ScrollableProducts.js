@@ -8,6 +8,7 @@ import {SIMPLE_URL} from '../../helper/baseUrl';
 import {AuthKey} from '../../helper/baseUrl';
 import {AuthPassword} from '../../helper/baseUrl';
 import {useNavigation} from '@react-navigation/native';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 const ScrollableProducts = () => {
   const navigation = useNavigation();
@@ -77,8 +78,10 @@ const ScrollableProducts = () => {
 
                 <View style={{marginTop: 5}}>
                   <Text style={styles.randomScrollableProductHead}>
-                    {hit.meal_name.lenght >= 17 ? hit.meal_name.slice(0, 17):hit.meal_name}
-                    {hit.meal_name.lenght >= 17 ? '...':<></>}
+                    {hit.meal_name.lenght >= 17
+                      ? hit.meal_name.slice(0, 17)
+                      : hit.meal_name}
+                    {hit.meal_name.lenght >= 17 ? '...' : <></>}
                   </Text>
                   <Text style={styles.randomScrollableProductPara}>
                     {hit.category_name}
@@ -103,7 +106,8 @@ const ScrollableProducts = () => {
                       ₹ {hit.meal_price}
                     </Text>
                     <Text style={{marginLeft: 40, color: '#5d5f61'}}>
-                       <Fontisto name="fire" size={20} color="#D8553A" /> {hit.calorie} cal
+                      <Fontisto name="fire" size={20} color="#D8553A" />{' '}
+                      {hit.calorie} cal
                     </Text>
                   </View>
                 </View>
@@ -112,7 +116,182 @@ const ScrollableProducts = () => {
           );
         })
       ) : (
-        <></>
+        <SkeletonPlaceholder>
+
+
+          <View style={{flexDirection:"row"}}>
+
+         
+
+
+
+
+
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View style={{flexDirection: 'row'}}>
+            <View style={{margin: 5}}>
+              <View style={styles.ScrollableProducts} />
+           
+
+              <View style={{marginTop: 5}}>
+                <View style={{flexDirection: 'row'}}>
+                  <View style={{flex: 2}}>
+                    <View style={{width: 100, height: 10}} />
+                    <View style={{width: 130, marginTop: 10, height: 10}} />
+                  </View>
+                  <View style={{flex: 1}}></View>
+                </View>
+              </View>
+            </View>
+          </View>
+          
+       
+
+          </View>
+        </SkeletonPlaceholder>
       )}
     </ScrollView>
   );

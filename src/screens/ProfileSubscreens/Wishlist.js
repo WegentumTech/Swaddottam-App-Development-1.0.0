@@ -52,6 +52,7 @@ const Wishlist = () => {
   return (
     <ScrollView>
       <PressBackWithTitle title="Wishlist" />
+      <View style={{marginTop:30}}></View>
 
       {datas ? (
         datas.length === 0 ? (

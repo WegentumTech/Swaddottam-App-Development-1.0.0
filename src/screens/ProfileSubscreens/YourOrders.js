@@ -12,6 +12,7 @@ import {
   BACKEND_URL,
   SIMPLE_URL,
 } from '../../helper/baseUrl';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 const YourOrders = () => {
   const navigation = useNavigation();
@@ -54,14 +55,16 @@ const YourOrders = () => {
   return (
     <ScrollView style={{backgroundColor: 'white', height: '100%'}}>
       <PressBackWithTitle title="Your Orders" />
+      <View style={{marginTop: 40}}></View>
 
       {datas ? (
         datas.map(hit => {
-         
           return (
             <TouchableOpacity
               key={hit.id}
-              onPress={() => navigation.navigate('OrderStatus',{orderId:hit.id})}>
+              onPress={() =>
+                navigation.navigate('OrderStatus', {orderId: hit.id})
+              }>
               <View
                 style={{
                   borderColor: '#D9D9D9',
@@ -91,9 +94,7 @@ const YourOrders = () => {
                       }}>
                       {hit.order_for_name}
                     </Text>
-                    <Text style={{marginLeft: 10}}>
-                    {hit.address}
-                    </Text>
+                    <Text style={{marginLeft: 10}}>{hit.address}</Text>
                   </View>
                   <View style={{flex: 1}}>
                     <Text
@@ -118,18 +119,14 @@ const YourOrders = () => {
                 <View style={{marginHorizontal: 5, marginTop: 10}}>
                   <Text style={{color: '#625F5F', fontSize: 15}}>ITEMS</Text>
 
+                  {hit.items.map(hitu => {
+                    return (
+                      <Text key={hitu.id} style={{color: 'black'}}>
+                        {hitu.quantity} X {hitu.meal_name}
+                      </Text>
+                    );
+                  })}
 
-                  {
-                    hit.items.map((hitu)=>{
-                      return  <Text key={hitu.id} style={{color: 'black'}}>{hitu.quantity} X {hitu.meal_name}</Text>
-                    })
-                  }
-
-
-
-
-
-                 
                   <Text style={{color: '#625F5F', fontSize: 15, marginTop: 10}}>
                     ORDERED ON
                   </Text>
@@ -160,7 +157,403 @@ const YourOrders = () => {
           );
         })
       ) : (
-        <></>
+        <SkeletonPlaceholder>
+          <View
+            style={{
+              borderColor: '#D9D9D9',
+              borderStyle: 'solid',
+              borderWidth: 1,
+              padding: 15,
+              marginHorizontal: 20,
+              borderRadius: 20,
+              marginTop: 35,
+              marginBottom: 15,
+            }}>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{flex: 1}}>
+                <View style={{height: 100, width: 110, borderRadius: 20}} />
+              </View>
+              <View style={{flex: 1}}>
+                <Text
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 15,
+                  }}
+                />
+                <View style={{marginLeft: 10, width: 100, height: 10}} />
+              </View>
+              <View style={{flex: 1}}>
+                <View
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 10,
+                  }}
+                />
+              </View>
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View style={{width: 50, height: 10, marginTop: 10}} />
+
+              <View
+                style={{
+                  color: '#625F5F',
+                  fontSize: 15,
+                  marginTop: 10,
+                  width: 100,
+                  height: 10,
+                }}
+              />
+              <View style={{color: 'black', width: 100, height: 10}} />
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View
+                style={{
+                  color: '#4AABE7',
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                }}
+              />
+            </View>
+          </View>
+          <View
+            style={{
+              borderColor: '#D9D9D9',
+              borderStyle: 'solid',
+              borderWidth: 1,
+              padding: 15,
+              marginHorizontal: 20,
+              borderRadius: 20,
+              marginTop: 35,
+              marginBottom: 15,
+            }}>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{flex: 1}}>
+                <View style={{height: 100, width: 110, borderRadius: 20}} />
+              </View>
+              <View style={{flex: 1}}>
+                <Text
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 15,
+                  }}
+                />
+                <View style={{marginLeft: 10, width: 100, height: 10}} />
+              </View>
+              <View style={{flex: 1}}>
+                <View
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 10,
+                  }}
+                />
+              </View>
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View style={{width: 50, height: 10, marginTop: 10}} />
+
+              <View
+                style={{
+                  color: '#625F5F',
+                  fontSize: 15,
+                  marginTop: 10,
+                  width: 100,
+                  height: 10,
+                }}
+              />
+              <View style={{color: 'black', width: 100, height: 10}} />
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View
+                style={{
+                  color: '#4AABE7',
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                }}
+              />
+            </View>
+          </View>
+          <View
+            style={{
+              borderColor: '#D9D9D9',
+              borderStyle: 'solid',
+              borderWidth: 1,
+              padding: 15,
+              marginHorizontal: 20,
+              borderRadius: 20,
+              marginTop: 35,
+              marginBottom: 15,
+            }}>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{flex: 1}}>
+                <View style={{height: 100, width: 110, borderRadius: 20}} />
+              </View>
+              <View style={{flex: 1}}>
+                <Text
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 15,
+                  }}
+                />
+                <View style={{marginLeft: 10, width: 100, height: 10}} />
+              </View>
+              <View style={{flex: 1}}>
+                <View
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 10,
+                  }}
+                />
+              </View>
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View style={{width: 50, height: 10, marginTop: 10}} />
+
+              <View
+                style={{
+                  color: '#625F5F',
+                  fontSize: 15,
+                  marginTop: 10,
+                  width: 100,
+                  height: 10,
+                }}
+              />
+              <View style={{color: 'black', width: 100, height: 10}} />
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View
+                style={{
+                  color: '#4AABE7',
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                }}
+              />
+            </View>
+          </View>
+          <View
+            style={{
+              borderColor: '#D9D9D9',
+              borderStyle: 'solid',
+              borderWidth: 1,
+              padding: 15,
+              marginHorizontal: 20,
+              borderRadius: 20,
+              marginTop: 35,
+              marginBottom: 15,
+            }}>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{flex: 1}}>
+                <View style={{height: 100, width: 110, borderRadius: 20}} />
+              </View>
+              <View style={{flex: 1}}>
+                <Text
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 15,
+                  }}
+                />
+                <View style={{marginLeft: 10, width: 100, height: 10}} />
+              </View>
+              <View style={{flex: 1}}>
+                <View
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 10,
+                  }}
+                />
+              </View>
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View style={{width: 50, height: 10, marginTop: 10}} />
+
+              <View
+                style={{
+                  color: '#625F5F',
+                  fontSize: 15,
+                  marginTop: 10,
+                  width: 100,
+                  height: 10,
+                }}
+              />
+              <View style={{color: 'black', width: 100, height: 10}} />
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View
+                style={{
+                  color: '#4AABE7',
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                }}
+              />
+            </View>
+          </View>
+          <View
+            style={{
+              borderColor: '#D9D9D9',
+              borderStyle: 'solid',
+              borderWidth: 1,
+              padding: 15,
+              marginHorizontal: 20,
+              borderRadius: 20,
+              marginTop: 35,
+              marginBottom: 15,
+            }}>
+            <View style={{flexDirection: 'row'}}>
+              <View style={{flex: 1}}>
+                <View style={{height: 100, width: 110, borderRadius: 20}} />
+              </View>
+              <View style={{flex: 1}}>
+                <Text
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 15,
+                  }}
+                />
+                <View style={{marginLeft: 10, width: 100, height: 10}} />
+              </View>
+              <View style={{flex: 1}}>
+                <View
+                  style={{
+                    width: 100,
+                    height: 10,
+                    marginTop: 10,
+                  }}
+                />
+              </View>
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View style={{width: 50, height: 10, marginTop: 10}} />
+
+              <View
+                style={{
+                  color: '#625F5F',
+                  fontSize: 15,
+                  marginTop: 10,
+                  width: 100,
+                  height: 10,
+                }}
+              />
+              <View style={{color: 'black', width: 100, height: 10}} />
+            </View>
+
+            <View
+              style={{
+                backgroundColor: '#D9D9D9',
+                padding: 1,
+                marginHorizontal: 5,
+                marginTop: 15,
+              }}
+            />
+
+            <View style={{marginHorizontal: 5, marginTop: 10}}>
+              <View
+                style={{
+                  color: '#4AABE7',
+                  fontSize: 15,
+                  fontWeight: 'bold',
+                }}
+              />
+            </View>
+          </View>
+        </SkeletonPlaceholder>
       )}
     </ScrollView>
   );

@@ -8,6 +8,7 @@ import {AuthKey} from '../../helper/baseUrl';
 import {AuthPassword} from '../../helper/baseUrl';
 import {BACKEND_URL} from '../../helper/baseUrl';
 import {SIMPLE_URL} from '../../helper/baseUrl';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 
 const Starters = () => {
   const navigation = useNavigation();
@@ -70,8 +71,49 @@ const Starters = () => {
         {datas ? (
           datas[0].map(hit => {
             return (
-              <TouchableOpacity key={hit.id} onPress={() => navigation.navigate('SingleMealScreen',{MealId:hit.id})}>
-
+              <TouchableOpacity
+                key={hit.id}
+                onPress={() =>
+                  navigation.navigate('SingleMealScreen', {MealId: hit.id})
+                }>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    borderStyle: 'solid',
+                    borderColor: '#C8C8C8',
+                    borderWidth: 1,
+                    borderRadius: 10,
+                    padding: 10,
+                    margin: 5,
+                  }}>
+                  <Image
+                    style={{width: 100, height: 100, flex: 1, marginTop: 5}}
+                    source={{uri: SIMPLE_URL + hit.meal_image}}
+                  />
+                  <View style={{flex: 1}}>
+                    <Text
+                      style={{
+                        fontSize: 20,
+                        fontWeight: 'bold',
+                        color: '#333333',
+                        marginTop: 10,
+                      }}>
+                      {hit.meal_name}
+                    </Text>
+                    <Text style={{color: '#C8C8C8', marginRight: 10}}>
+                      {hit.meal_description.slice(0, 20)}...
+                    </Text>
+                  </View>
+                  <Text style={{color: '#079D49', fontSize: 20, flex: 1}}>
+                    ₹{hit.meal_price}
+                  </Text>
+                </View>
+              </TouchableOpacity>
+            );
+          })
+        ) : (
+          <SkeletonPlaceholder>
+            <View style={{flexDirection:"row"}}>
               <View
                 style={{
                   flexDirection: 'row',
@@ -81,34 +123,131 @@ const Starters = () => {
                   borderRadius: 10,
                   padding: 10,
                   margin: 5,
+                  height:100
                 }}>
-                <Image
-                  style={{width: 100, height: 100, flex: 1, marginTop: 5}}
-                  source={{uri:SIMPLE_URL+hit.meal_image}}
+                <View
+                  style={{width: 100, height: 100, flex: 1, marginTop: 5,marginLeft:10}}
+                 
                 />
                 <View style={{flex: 1}}>
-                  <Text
+                  <View
                     style={{
-                      fontSize: 20,
-                      fontWeight: 'bold',
-                      color: '#333333',
-                      marginTop: 10,
-                    }}>
-                    {hit.meal_name}
-                  </Text>
-                  <Text style={{color: '#C8C8C8',marginRight:10}}>
-                    {hit.meal_description.slice(0,20)}...
-                  </Text>
+                      width:100
+                      ,height:10,marginLeft:10
+                    }}/>
+                   
+                  <View style={{width:100,height:10,marginTop:10}}/>
                 </View>
-                <Text style={{color: '#079D49', fontSize: 20, flex: 1}}>
-                  ₹{hit.meal_price}
-                </Text>
+                <View style={{width:20,height:10,marginLeft:10}}/>
               </View>
-              </TouchableOpacity>
-            );
-          })
-        ) : (
-          <></>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  borderStyle: 'solid',
+                  borderColor: '#C8C8C8',
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  padding: 10,
+                  margin: 5,
+                  height:100
+                }}>
+                <View
+                  style={{width: 100, height: 100, flex: 1, marginTop: 5,marginLeft:10}}
+                 
+                />
+                <View style={{flex: 1}}>
+                  <View
+                    style={{
+                      width:100
+                      ,height:10,marginLeft:10
+                    }}/>
+                   
+                  <View style={{width:100,height:10,marginTop:10}}/>
+                </View>
+                <View style={{width:20,height:10,marginLeft:10}}/>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  borderStyle: 'solid',
+                  borderColor: '#C8C8C8',
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  padding: 10,
+                  margin: 5,
+                  height:100
+                }}>
+                <View
+                  style={{width: 100, height: 100, flex: 1, marginTop: 5,marginLeft:10}}
+                 
+                />
+                <View style={{flex: 1}}>
+                  <View
+                    style={{
+                      width:100
+                      ,height:10,marginLeft:10
+                    }}/>
+                   
+                  <View style={{width:100,height:10,marginTop:10}}/>
+                </View>
+                <View style={{width:20,height:10,marginLeft:10}}/>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  borderStyle: 'solid',
+                  borderColor: '#C8C8C8',
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  padding: 10,
+                  margin: 5,
+                  height:100
+                }}>
+                <View
+                  style={{width: 100, height: 100, flex: 1, marginTop: 5,marginLeft:10}}
+                 
+                />
+                <View style={{flex: 1}}>
+                  <View
+                    style={{
+                      width:100
+                      ,height:10,marginLeft:10
+                    }}/>
+                   
+                  <View style={{width:100,height:10,marginTop:10}}/>
+                </View>
+                <View style={{width:20,height:10,marginLeft:10}}/>
+              </View>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  borderStyle: 'solid',
+                  borderColor: '#C8C8C8',
+                  borderWidth: 1,
+                  borderRadius: 10,
+                  padding: 10,
+                  margin: 5,
+                  height:100
+                }}>
+                <View
+                  style={{width: 100, height: 100, flex: 1, marginTop: 5,marginLeft:10}}
+                 
+                />
+                <View style={{flex: 1}}>
+                  <View
+                    style={{
+                      width:100
+                      ,height:10,marginLeft:10
+                    }}/>
+                   
+                  <View style={{width:100,height:10,marginTop:10}}/>
+                </View>
+                <View style={{width:20,height:10,marginLeft:10}}/>
+              </View>
+            </View>
+           
+       
+          </SkeletonPlaceholder>
         )}
       </ScrollView>
     </View>

@@ -9,6 +9,8 @@ import {BACKEND_URL} from '../../helper/baseUrl';
 import {SIMPLE_URL} from '../../helper/baseUrl';
 import {AuthKey} from '../../helper/baseUrl';
 import {AuthPassword} from '../../helper/baseUrl';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+
 const RecommendedProducts = () => {
   const navigation = useNavigation();
   const [datas, setDatas] = useState('');
@@ -27,7 +29,6 @@ const RecommendedProducts = () => {
           },
         )
         .then(acc => {
-          // console.log(acc.data);
           setDatas(acc.data);
         })
         .catch(err => {
@@ -45,20 +46,6 @@ const RecommendedProducts = () => {
           <Text style={styles.mainHeader}>Recommended Meals</Text>
           <Text style={styles.mainPara}>meals recommended for you</Text>
         </View>
-
-        {/* <View style={{flex: 3}}>
-          <TouchableOpacity>
-            <Text style={styles.SideButton}>
-              {' '}
-              All{' '}
-              <Ionicons
-                name="chevron-forward-outline"
-                size={20}
-                color="#C8C8C8"
-              />
-            </Text>
-          </TouchableOpacity>
-        </View> */}
       </View>
       {datas ? (
         datas.map(hit => {
@@ -156,7 +143,300 @@ const RecommendedProducts = () => {
           );
         })
       ) : (
-        <></>
+        <SkeletonPlaceholder>
+    
+          <View style={{marginTop: 20}}>
+            <View
+              style={{
+                marginHorizontal: 10,
+                borderColor: '#C8C8C8',
+                borderStyle: 'solid',
+                borderWidth: 1,
+                borderRadius: 20,
+                paddingBottom: 30,
+              }}>
+              <View style={styles.RecommendProducts} />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginTop: 20,
+                  marginHorizontal: 10,
+                }}>
+                <View style={{flex: 1}}>
+                  <View style={{width:100,height:10}} />
+                  <View style={{width: 100, height: 10,marginTop:10}} />
+                </View>
+
+                <View style={{flex: 1}}>
+                  <View style={{width: 100, height: 10, marginTop: 10}} />
+                  <View
+                    style={{
+                      textAlign: 'right',
+                      marginTop: 10,
+                      color: '#9E9E9E',
+                    }}
+                  />
+                </View>
+              </View>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginHorizontal: 10,
+                  marginTop: 10,
+                }}>
+                <View
+                  style={{
+                    color: '#333333',
+                    marginTop: 8,
+                    textDecorationLine: 'line-through',
+                  }}
+                />
+                <View
+                  style={{
+                    color: '#F88922',
+                    fontSize: 20,
+                    marginLeft: 6,
+                    fontWeight: 'bold',
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+          <View style={{marginTop: 20}}>
+            <View
+              style={{
+                marginHorizontal: 10,
+                borderColor: '#C8C8C8',
+                borderStyle: 'solid',
+                borderWidth: 1,
+                borderRadius: 20,
+                paddingBottom: 30,
+              }}>
+              <View style={styles.RecommendProducts} />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginTop: 20,
+                  marginHorizontal: 10,
+                }}>
+                <View style={{flex: 1}}>
+                  <View style={{width:100,height:10}} />
+                  <View style={{width: 100, height: 10,marginTop:10}} />
+                </View>
+
+                <View style={{flex: 1}}>
+                  <View style={{width: 100, height: 10, marginTop: 10}} />
+                  <View
+                    style={{
+                      textAlign: 'right',
+                      marginTop: 10,
+                      color: '#9E9E9E',
+                    }}
+                  />
+                </View>
+              </View>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginHorizontal: 10,
+                  marginTop: 10,
+                }}>
+                <View
+                  style={{
+                    color: '#333333',
+                    marginTop: 8,
+                    textDecorationLine: 'line-through',
+                  }}
+                />
+                <View
+                  style={{
+                    color: '#F88922',
+                    fontSize: 20,
+                    marginLeft: 6,
+                    fontWeight: 'bold',
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+          <View style={{marginTop: 20}}>
+            <View
+              style={{
+                marginHorizontal: 10,
+                borderColor: '#C8C8C8',
+                borderStyle: 'solid',
+                borderWidth: 1,
+                borderRadius: 20,
+                paddingBottom: 30,
+              }}>
+              <View style={styles.RecommendProducts} />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginTop: 20,
+                  marginHorizontal: 10,
+                }}>
+                <View style={{flex: 1}}>
+                  <View style={{width:100,height:10}} />
+                  <View style={{width: 100, height: 10,marginTop:10}} />
+                </View>
+
+                <View style={{flex: 1}}>
+                  <View style={{width: 100, height: 10, marginTop: 10}} />
+                  <View
+                    style={{
+                      textAlign: 'right',
+                      marginTop: 10,
+                      color: '#9E9E9E',
+                    }}
+                  />
+                </View>
+              </View>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginHorizontal: 10,
+                  marginTop: 10,
+                }}>
+                <View
+                  style={{
+                    color: '#333333',
+                    marginTop: 8,
+                    textDecorationLine: 'line-through',
+                  }}
+                />
+                <View
+                  style={{
+                    color: '#F88922',
+                    fontSize: 20,
+                    marginLeft: 6,
+                    fontWeight: 'bold',
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+          <View style={{marginTop: 20}}>
+            <View
+              style={{
+                marginHorizontal: 10,
+                borderColor: '#C8C8C8',
+                borderStyle: 'solid',
+                borderWidth: 1,
+                borderRadius: 20,
+                paddingBottom: 30,
+              }}>
+              <View style={styles.RecommendProducts} />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginTop: 20,
+                  marginHorizontal: 10,
+                }}>
+                <View style={{flex: 1}}>
+                  <View style={{width:100,height:10}} />
+                  <View style={{width: 100, height: 10,marginTop:10}} />
+                </View>
+
+                <View style={{flex: 1}}>
+                  <View style={{width: 100, height: 10, marginTop: 10}} />
+                  <View
+                    style={{
+                      textAlign: 'right',
+                      marginTop: 10,
+                      color: '#9E9E9E',
+                    }}
+                  />
+                </View>
+              </View>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginHorizontal: 10,
+                  marginTop: 10,
+                }}>
+                <View
+                  style={{
+                    color: '#333333',
+                    marginTop: 8,
+                    textDecorationLine: 'line-through',
+                  }}
+                />
+                <View
+                  style={{
+                    color: '#F88922',
+                    fontSize: 20,
+                    marginLeft: 6,
+                    fontWeight: 'bold',
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+          <View style={{marginTop: 20}}>
+            <View
+              style={{
+                marginHorizontal: 10,
+                borderColor: '#C8C8C8',
+                borderStyle: 'solid',
+                borderWidth: 1,
+                borderRadius: 20,
+                paddingBottom: 30,
+              }}>
+              <View style={styles.RecommendProducts} />
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginTop: 20,
+                  marginHorizontal: 10,
+                }}>
+                <View style={{flex: 1}}>
+                  <View style={{width:100,height:10}} />
+                  <View style={{width: 100, height: 10,marginTop:10}} />
+                </View>
+
+                <View style={{flex: 1}}>
+                  <View style={{width: 100, height: 10, marginTop: 10}} />
+                  <View
+                    style={{
+                      textAlign: 'right',
+                      marginTop: 10,
+                      color: '#9E9E9E',
+                    }}
+                  />
+                </View>
+              </View>
+
+              <View
+                style={{
+                  flexDirection: 'row',
+                  marginHorizontal: 10,
+                  marginTop: 10,
+                }}>
+                <View
+                  style={{
+                    color: '#333333',
+                    marginTop: 8,
+                    textDecorationLine: 'line-through',
+                  }}
+                />
+                <View
+                  style={{
+                    color: '#F88922',
+                    fontSize: 20,
+                    marginLeft: 6,
+                    fontWeight: 'bold',
+                  }}
+                />
+              </View>
+            </View>
+          </View>
+         
+        </SkeletonPlaceholder>
       )}
     </View>
   );
