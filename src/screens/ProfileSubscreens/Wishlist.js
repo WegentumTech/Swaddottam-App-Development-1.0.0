@@ -11,7 +11,7 @@ import {AuthPassword} from '../../helper/baseUrl';
 import {BACKEND_URL} from '../../helper/baseUrl';
 import {SIMPLE_URL} from '../../helper/baseUrl';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
+ 
 const Wishlist = () => {
   const navigation = useNavigation();
   const [datas, setDatas] = useState('');

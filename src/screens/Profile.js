@@ -63,7 +63,8 @@ const Profile = () => {
   };
 
   return (
-    <ScrollView style={{backgroundColor: '#F68B23', height: 'auto'}}>
+  <View style={{height:"auto"}}>
+    <ScrollView style={{backgroundColor: '#F68B23'}}>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
@@ -243,6 +244,8 @@ const Profile = () => {
         </View>
       </View>
     </ScrollView>
+  </View>
+    
   );
 };
 

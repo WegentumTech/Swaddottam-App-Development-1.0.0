@@ -67,7 +67,7 @@ const PaymentSucess = () => {
         You Can Track Your Order By Clicking Below
       </Text>
 
-      <TouchableOpacity onPress={() => navigation.navigate('YourOrders')}>
+      <TouchableOpacity onPress={() => navigation.replace('YourOrders')}>
         <Text
           style={{
             backgroundColor: '#7AC043',
