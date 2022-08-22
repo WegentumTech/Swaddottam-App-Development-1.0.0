@@ -36,7 +36,7 @@ const CategotyItems = () => {
           },
         )
         .then(acc => {
-          // console.log(acc.data);
+          console.log(acc.data);
           setDatas(acc.data);
         })
         .catch(err => {
@@ -137,7 +137,7 @@ const CategotyItems = () => {
                               fontSize: 15,
                               fontWeight: 'bold',
                             }}>
-                            4.5 <Ionicons name="star" size={18} color="white" />
+                            {hit.rating} <Ionicons name="star" size={18} color="white" />
                           </Text>
                           <Text
                             style={{
@@ -151,7 +151,7 @@ const CategotyItems = () => {
                               size={20}
                               color="#D8553A"
                             />{' '}
-                            145 cal
+                            {hit.calorie} cal
                           </Text>
                         </View>
                       </View>
@@ -167,7 +167,7 @@ const CategotyItems = () => {
                             marginTop: 8,
                             textDecorationLine: 'line-through',
                           }}>
-                          ₹200
+                          ₹{hit.old_price}
                         </Text>
                         <Text
                           style={{

@@ -187,7 +187,7 @@ const SingleMealScreen = () => {
         )
         .then(acc => {
           // console.log(acc.data);
-          navigation.navigate('Cart');
+          navigation.replace('Cart');
         })
         .catch(err => {
           console.log(err);

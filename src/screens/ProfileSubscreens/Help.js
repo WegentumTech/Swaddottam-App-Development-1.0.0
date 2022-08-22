@@ -1,4 +1,4 @@
-import {View, Text, Image, TouchableOpacity} from 'react-native';
+import {View, Text, Image, TouchableOpacity,Linking} from 'react-native';
 import React from 'react';
 import PressBackWithTitle from '../../components/Reusable/PressBackWithTitle';
 import {useNavigation} from '@react-navigation/native';
@@ -34,7 +34,7 @@ const Help = () => {
         How Can We help You ?
       </Text>
 
-      <TouchableOpacity style={styles.profileModules}>
+      <TouchableOpacity onPress={()=>Linking.openURL("https://wa.me/6393344720?text=Hey%20Team%20Swaddottam%20I%20Need%20A%20Help.")} style={styles.profileModules}>
         <View style={{marginTop: 1, flex: 0.5}}>
           <Fontisto name="hipchat" size={18} color="black" />
         </View>
@@ -50,7 +50,7 @@ const Help = () => {
           />
         </View>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.profileModules}>
+      <TouchableOpacity onPress={()=>Linking.openURL("tel:+916393344720")} style={styles.profileModules}>
         <View style={{marginTop: 1, flex: 0.5}}>
           <MaterialIcons name="support-agent" size={18} color="black" />
         </View>

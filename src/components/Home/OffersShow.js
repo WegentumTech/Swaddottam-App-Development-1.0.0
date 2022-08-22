@@ -9,6 +9,8 @@ import {
   BACKEND_URL,
   SIMPLE_URL,
 } from '../../helper/baseUrl';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
+
 const OffersShow = () => {
   const [data, setData] = useState('');
   const navigation = useNavigation();
@@ -121,7 +123,27 @@ const OffersShow = () => {
           </View>
         </View>
       ) : (
-        <></>
+        <>
+          <SkeletonPlaceholder>
+            <View style={{marginHorizontal: 10, marginTop: 15}}>
+              <View style={{width: 100, height: 20}} />
+              <View style={{width: 250, height: 20, marginTop: 10}} />
+
+              <View>
+                <View style={styles.homeBannerOne} />
+              </View>
+
+              <View style={{flexDirection: 'row'}}>
+                <View style={{flex: 1}}>
+                  <View style={styles.homeBannerTwo} />
+                </View>
+                <View style={{flex: 1}}>
+                  <View style={styles.homeBannerThree} />
+                </View>
+              </View>
+            </View>
+          </SkeletonPlaceholder>
+        </>
       )}
     </>
   );

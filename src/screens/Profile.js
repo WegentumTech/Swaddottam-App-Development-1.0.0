@@ -56,23 +56,14 @@ const Profile = () => {
     }
   };
 
-
-  const handleLogout = async() =>{
-
-
-    await AsyncStorage.removeItem("Reached")
-    await AsyncStorage.removeItem("ActiveUserId")
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem('Reached');
+    await AsyncStorage.removeItem('ActiveUserId');
     RNRestart.Restart();
-    
-
-
-
-
-
-  }
+  };
 
   return (
-    <ScrollView style={{backgroundColor: '#F26227', height: '100%'}}>
+    <ScrollView style={{backgroundColor: '#F68B23', height: 'auto'}}>
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
           onPress={() => navigation.goBack()}
@@ -243,7 +234,6 @@ const Profile = () => {
               />
             </View>
           </TouchableOpacity>
-
         </View>
 
         <View style={{alignSelf: 'center', marginTop: 50, marginBottom: 50}}>

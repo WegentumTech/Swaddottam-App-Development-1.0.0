@@ -27,7 +27,18 @@ const BillingAndPayment = () => {
   const [AreaCode, setAreaCode] = useState('');
   const [remark, setRemark] = useState('');
   const [userAddress, setUserAddress] = useState('');
-  const [date, setDate] = useState(new Date());
+  const [billingDate, setBillingDate] = useState("")
+
+
+
+ 
+
+
+
+
+
+
+
 
   const route = useRoute();
 
@@ -37,6 +48,16 @@ const BillingAndPayment = () => {
   ];
 
   useEffect(() => {
+
+    // var date = new Date().getDate();
+    // var month = new Date().getMonth() + 1;
+    // var year = new Date().getFullYear();
+  
+    var FullDate = new Date()
+
+    setBillingDate(String(FullDate))
+
+
     GetUserAddress();
   }, []);
 
@@ -201,6 +222,7 @@ const BillingAndPayment = () => {
                   remark: remark.remark,
                   paymentMethod: value.value ? value.value : value,
                   totPayment: route.params.totalPayment,
+                  billingDates:billingDate
                 })
               }>
               <Text style={styles.button2}>Proceed</Text>

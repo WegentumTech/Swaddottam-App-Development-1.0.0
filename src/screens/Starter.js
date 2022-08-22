@@ -45,7 +45,7 @@ const Starter = () => {
     <View style={{backgroundColor:"white",height:"100%"}}>
       <ScrollView>
         <PressBackWithTitle title="Starter" />
-
+        <View style={{marginTop:50}}></View>
         {
           datas ?
           datas[0].map((hit)=>{
@@ -59,7 +59,7 @@ const Starter = () => {
               borderWidth: 1,
               borderRadius: 10,
               padding: 10,
-              margin: 5,
+              margin: 5
             }}>
             <Image
               style={{width: 100, height: 100, flex: 1, marginTop: 5}}

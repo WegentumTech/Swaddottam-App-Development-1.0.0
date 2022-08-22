@@ -34,7 +34,6 @@ const Cart = () => {
   const getCartData = async () => {
     console.log('this is called');
     const userId = await AsyncStorage.getItem('ActiveUserId');
- 
 
     try {
       axios
@@ -206,19 +205,14 @@ const Cart = () => {
                         flexDirection: 'row',
                         flex: 1,
                       }}>
-                      <TouchableOpacity
-                        onPress={() =>
-                          navigation.navigate('SingleMealScreen', {
-                            MealId: hit.product_id,
-                          })
-                        }>
+                      <View>
                         <Image
                           style={styles.cartProductImage}
                           source={{
                             uri: SIMPLE_URL + hit.meal_image,
                           }}
                         />
-                      </TouchableOpacity>
+                      </View>
 
                       <View style={{flex: 1, marginLeft: 5}}>
                         <Text
@@ -234,70 +228,75 @@ const Cart = () => {
                         </Text>
                       </View>
 
-                      <View style={{flex: 1.5}}>
-                        <View
-                          style={{
-                            flexDirection: 'row',
-                            alignSelf: 'center',
-                            borderColor: '#F8774A',
-                            borderWidth: 1.5,
-                            borderStyle: 'solid',
-                            borderRadius: 20,
-                            paddingHorizontal: 20,
-                          }}>
-                          {curPrice === 1 ? (
-                            <TouchableOpacity
-                              onPress={() => handleDeleteCartItem(hit.cartid)}>
-                              <MaterialIcons
-                                style={{marginTop: 10}}
-                                name="delete"
-                                size={18}
-                                color="#F8774A"
-                              />
-                            </TouchableOpacity>
-                          ) : (
+                      <View>
+                        <View style={{flex: 1.7}}>
+                          <View
+                            style={{
+                              flexDirection: 'row',
+                              alignSelf: 'center',
+                              borderColor: '#F8774A',
+                              borderWidth: 1.5,
+                              borderStyle: 'solid',
+                              borderRadius: 20,
+                              paddingHorizontal: 20,
+                            }}>
+                            {curPrice <= 1 ? (
+                              <TouchableOpacity
+                                onPress={() =>
+                                  handleDeleteCartItem(hit.cartid)
+                                }>
+                                <MaterialIcons
+                                  style={{marginTop: 13}}
+                                  name="delete"
+                                  size={23}
+                                  color="#F8774A"
+                                />
+                              </TouchableOpacity>
+                            ) : (
+                              <Text
+                                onPress={() => decreaseValue(hit.cartid)}
+                                style={{
+                                  padding: 6,
+                                  fontSize: 25,
+                                  color: '#F8774A',
+                                  fontWeight: 'bold',
+                                }}>
+                                -
+                              </Text>
+                            )}
+
                             <Text
-                              onPress={() => decreaseValue(hit.cartid)}
                               style={{
-                                margin: 5,
-                                fontSize: 20,
+                                padding: 6,
+                                fontSize: 25,
                                 color: '#F8774A',
                                 fontWeight: 'bold',
                               }}>
-                              -
+                              {curPrice}
                             </Text>
-                          )}
+                            <Text
+                              onPress={() => increaseValue(hit.cartid)}
+                              style={{
+                                padding: 6,
+                                fontSize: 25,
+                                color: '#F8774A',
+                                fontWeight: 'bold',
+                              }}>
+                              +
+                            </Text>
+                          </View>
+                        </View>
 
+                        <View style={{flex: 0.5, marginRight: 15, top: -25}}>
                           <Text
                             style={{
-                              margin: 5,
-                              fontSize: 20,
-                              color: '#F8774A',
-                              fontWeight: 'bold',
+                              alignSelf: 'flex-end',
+                              fontSize: 15,
+                              color: 'black',
                             }}>
-                            {curPrice}
-                          </Text>
-                          <Text
-                            onPress={() => increaseValue(hit.cartid)}
-                            style={{
-                              margin: 5,
-                              fontSize: 20,
-                              color: '#F8774A',
-                              fontWeight: 'bold',
-                            }}>
-                            +
+                            ₹{hit.meal_price} X {curPrice}
                           </Text>
                         </View>
-                      </View>
-                      <View style={{flex: 0.5, marginRight: 15}}>
-                        <Text
-                          style={{
-                            alignSelf: 'flex-end',
-                            fontSize: 15,
-                            color: 'black',
-                          }}>
-                          ₹{hit.meal_price} X {curPrice}
-                        </Text>
                       </View>
                     </View>
                   </View>
@@ -310,7 +309,9 @@ const Cart = () => {
 
           <TouchableOpacity
             style={{marginVertical: 20}}
-            onPress={() => navigation.replace('BillingAndPayment',{totalPayment:latPrice})}>
+            onPress={() =>
+              navigation.replace('BillingAndPayment', {totalPayment: latPrice})
+            }>
             <Text
               style={{
                 backgroundColor: '#F8774A',
@@ -327,6 +328,16 @@ const Cart = () => {
               <AntDesign name="arrowright" size={20} color="white" />
             </Text>
           </TouchableOpacity>
+
+          <View style={{marginTop: 10}}>
+            <TouchableOpacity onPress={() => navigation.navigate('Home')}>
+              <Text style={{textAlign: 'center', color: '#40403f'}}>
+                {' '}
+                <AntDesign name="arrowleft" size={18} color="#40403f" /> Back To
+                Home
+              </Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       )}
     </>

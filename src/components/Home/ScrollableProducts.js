@@ -1,7 +1,7 @@
 import {View, Text, Image, ScrollView, TouchableOpacity} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import styles from '../../styles/globalStyles';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import axios from 'axios';
 import {BACKEND_URL} from '../../helper/baseUrl';
 import {SIMPLE_URL} from '../../helper/baseUrl';
@@ -27,7 +27,7 @@ const ScrollableProducts = () => {
           },
         )
         .then(acc => {
-          // console.log(acc.data);
+          console.log(acc.data);
           setDatas(acc.data);
         })
         .catch(err => {
@@ -47,7 +47,9 @@ const ScrollableProducts = () => {
         datas.map(hit => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate('SingleMealScreen',{MealId:hit.id})}
+              onPress={() =>
+                navigation.navigate('SingleMealScreen', {MealId: hit.id})
+              }
               key={hit.id}>
               <View style={{margin: 5}}>
                 <Image
@@ -75,7 +77,8 @@ const ScrollableProducts = () => {
 
                 <View style={{marginTop: 5}}>
                   <Text style={styles.randomScrollableProductHead}>
-                    {hit.meal_name.slice(0, 17)}...
+                    {hit.meal_name.lenght >= 17 ? hit.meal_name.slice(0, 17):hit.meal_name}
+                    {hit.meal_name.lenght >= 17 ? '...':<></>}
                   </Text>
                   <Text style={styles.randomScrollableProductPara}>
                     {hit.category_name}
@@ -93,14 +96,14 @@ const ScrollableProducts = () => {
                         marginTop: 9,
                         textDecorationLine: 'line-through',
                       }}>
-                      ₹ 250
+                      ₹ {hit.old_price}
                     </Text>
                     <Text
                       style={{color: '#F88922', fontSize: 23, marginLeft: 5}}>
                       ₹ {hit.meal_price}
                     </Text>
-                    <Text style={{marginLeft: 60}}>
-                      <Ionicons name="heart" size={30} color="#C8C8C8" />
+                    <Text style={{marginLeft: 40, color: '#5d5f61'}}>
+                       <Fontisto name="fire" size={20} color="#D8553A" /> {hit.calorie} cal
                     </Text>
                   </View>
                 </View>

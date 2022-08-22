@@ -33,6 +33,7 @@ const OrderSummary = () => {
 
   useEffect(() => {
     getCartData();
+    console.log(route.params.billingDates)
   }, []);
 
   const getCartData = async () => {
@@ -53,7 +54,7 @@ const OrderSummary = () => {
           },
         )
         .then(acc => {
-          console.log(acc.data);
+          // console.log(acc.data);
           setDatas(acc.data);
         })
         .catch(err => {
@@ -84,8 +85,8 @@ const OrderSummary = () => {
             order_for_name: route.params.billingName,
             order_for_mobile: route.params.contactNumber,
             address: route.params.address,
-            zip: route.params.areaCode,
-            order_time: '2022/08/17 13:44:59',
+            zip: route.params.areaCode
+            // order_time: '2022/08/17 13:44:59',
           },
           {
             headers: {
