@@ -383,5 +383,12 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 18,
   },
+  screen: {
+    flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    position:"absolute",
+    alignSelf:"center",
+  },
 });
 export default styles;
