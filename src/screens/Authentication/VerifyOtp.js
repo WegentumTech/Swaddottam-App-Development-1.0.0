@@ -32,10 +32,12 @@ const VerifyOtp = () => {
   useEffect(() => {
     const OTP = route.params.ReveviedOtp;
     setEnteredOTP(OTP);
+    handleStartTimer();
   }, []);
 
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState('');
+  const [countdown, setCountdown] = useState(10);
 
   const route = useRoute();
 
@@ -43,11 +45,9 @@ const VerifyOtp = () => {
 
   // console.log(UserNumber, OTP);
 
-  const handleResendOtp = () => {
-    console.log('send otp again');
-  };
-
   const handleVerifyCode = () => {
+    
+
     setIsLoading(true);
 
     if (
@@ -105,6 +105,55 @@ const VerifyOtp = () => {
       console.log('Entered OTP Is Wrong');
       setIsLoading(false);
     }
+  };
+
+
+ 
+  const handleResendOtp = () => {
+    handleStartTimer();
+    
+    
+    console.log('sending otp again');
+    try {
+      axios
+        .post(
+          BACKEND_URL + 'getotp',
+          {
+            mobile: UserNumber,
+          },
+          {
+            headers: {
+              authkey: AuthKey,
+              secretkey: AuthPassword,
+            },
+          },
+        )
+        .then(acc => {
+            console.log(acc.data);
+            setEnteredOTP(acc.data.otp)
+         
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleStartTimer = () => {
+    // handleVerifyCode();
+    var timeleft = 9;
+
+    var downloadTimer = setInterval(function () {
+      if (timeleft <= 0) {
+        console.log('now it will be close');
+        clearInterval(downloadTimer);
+      }
+
+      setCountdown(1 + timeleft);
+      timeleft -= 1;
+    }, 1000);
   };
 
   return (
@@ -175,13 +224,20 @@ const VerifyOtp = () => {
       </View>
 
       <Text style={styles.errorMessage}>{message}</Text>
-
-      <Text style={styles.resendOtpText}>
-        Didn’t received OTP?{' '}
-        <Text onPress={handleResendOtp} style={styles.resenButton}>
-          RESEND
+      {countdown == 1 ? (
+        <Text style={styles.resendOtpText}>
+          Didn’t received OTP?{' '}
+          <Text onPress={handleResendOtp} style={styles.resenButton}>
+            RESEND
+          </Text>
         </Text>
-      </Text>
+      ) : (
+        <>
+          <Text style={styles.resendOtpText}>
+            Resend OTP In <Text style={styles.resenButton}>{countdown}</Text>
+          </Text>
+        </>
+      )}
 
       <View style={{alignSelf: 'center', marginTop: 30}}>
         {isLoading ? (
