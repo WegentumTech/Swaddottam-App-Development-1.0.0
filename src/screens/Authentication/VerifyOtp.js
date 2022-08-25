@@ -46,15 +46,10 @@ const VerifyOtp = () => {
   // console.log(UserNumber, OTP);
 
   const handleVerifyCode = () => {
-    
-
     setIsLoading(true);
 
     if (
-      String(enteredOTP).slice(0, 1) === pin1.pin1 &&
-      String(enteredOTP).slice(1, 2) === pin2.pin2 &&
-      String(enteredOTP).slice(2, 3) === pin3.pin3 &&
-      String(enteredOTP).slice(3, 4) === pin4.pin4
+      enteredOTP == pin1.pin1
     ) {
       console.log('this works');
       setMessage('');
@@ -107,12 +102,9 @@ const VerifyOtp = () => {
     }
   };
 
-
- 
   const handleResendOtp = () => {
     handleStartTimer();
-    
-    
+
     console.log('sending otp again');
     try {
       axios
@@ -129,9 +121,8 @@ const VerifyOtp = () => {
           },
         )
         .then(acc => {
-            console.log(acc.data);
-            setEnteredOTP(acc.data.otp)
-         
+          console.log(acc.data);
+          setEnteredOTP(acc.data.otp);
         })
         .catch(err => {
           console.log(err);
@@ -176,51 +167,17 @@ const VerifyOtp = () => {
 
       <View style={{flexDirection: 'row', alignSelf: 'center', marginTop: 20}}>
         <TextInput
+        letterSpacing={8}
+        placeholder='00000'
           ref={pin1Ref}
-          maxLength={1}
+          maxLength={5}
           keyboardType="number-pad"
           style={styles.otpInputBox}
           onChangeText={text => {
             setPin1({pin1: text});
-
-            if (pin1.pin1 != '') {
-              pin2Ref.current.focus();
-            }
           }}
         />
-        <TextInput
-          ref={pin2Ref}
-          maxLength={1}
-          keyboardType="number-pad"
-          style={styles.otpInputBox}
-          onChangeText={text => {
-            setPin2({pin2: text});
-            if (pin2.pin2 != '') {
-              pin3Ref.current.focus();
-            }
-          }}
-        />
-        <TextInput
-          ref={pin3Ref}
-          maxLength={1}
-          keyboardType="number-pad"
-          style={styles.otpInputBox}
-          onChangeText={text => {
-            setPin3({pin3: text});
-            if (pin3.pin3 != '') {
-              pin4Ref.current.focus();
-            }
-          }}
-        />
-        <TextInput
-          ref={pin4Ref}
-          onChangeText={text => {
-            setPin4({pin4: text});
-          }}
-          maxLength={1}
-          keyboardType="number-pad"
-          style={styles.otpInputBox}
-        />
+       
       </View>
 
       <Text style={styles.errorMessage}>{message}</Text>

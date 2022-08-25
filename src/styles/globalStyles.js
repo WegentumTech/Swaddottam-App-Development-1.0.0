@@ -48,17 +48,20 @@ const styles = StyleSheet.create({
     color: 'black',
   },
   otpInputBox: {
-    height: 40,
+    // height: 40,
     margin: 5,
     borderWidth: 1,
-    padding: 10,
-    width: 40,
+    padding: 5,
+    width: 150,
     borderColor: '#7D7D7D',
     borderRadius: 5,
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 20,
     color: 'black',
     textAlign: 'center',
+    backgroundColor:"white",
+    elevation:5,
+    // paddingTop:10
   },
 
   inputBoxCountryCode: {
