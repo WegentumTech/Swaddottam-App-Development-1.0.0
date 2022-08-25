@@ -12,7 +12,7 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import {useNavigation} from '@react-navigation/native';
 import RecommendedProducts from '../../components/Reusable/RecommendedProducts';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import Fontisto from 'react-native-vector-icons/Fontisto';
 import axios from 'axios';
 import {AuthKey} from '../../helper/baseUrl';
 import {AuthPassword} from '../../helper/baseUrl';
@@ -508,12 +508,13 @@ const SingleMealScreen = () => {
                               }}>
                               ₹ {hit.meal_price}
                             </Text>
-                            <Text style={{marginLeft: 60}}>
-                              <Ionicons
-                                name="heart"
-                                size={30}
+                            <Text style={{marginLeft: 30}}>
+                              <Fontisto
+                                name="fire"
+                                size={20}
                                 color="#C8C8C8"
                               />
+                             {" "} 145 Cal
                             </Text>
                           </View>
                         </View>
